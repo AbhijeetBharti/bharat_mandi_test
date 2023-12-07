@@ -7,9 +7,10 @@ class GetAPI {
     late PostsDataModel data;
     try {
       var response = await http.get(Uri.parse(url));
-      data = postsDataModelFromJson(response.body.toString());
+
       if (response.statusCode == 200) {
         // If the call to the server was successful, parse the JSON
+        data = postsDataModelFromJson(response.body.toString());
         return data;
       } else {
         // If that call was not successful, throw an error.
